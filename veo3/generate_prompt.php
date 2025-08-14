@@ -51,7 +51,25 @@ Your entire output must be a single JSON object conforming to the specified sche
     $scriptLanguage = $data['scriptLanguage'] ?? 'en';
     $dialogue = $data['dialogue'] ?? '';
 
-    $textPrompt = "You are a creative director. Create a video script based on these parameters: Product: $productName, Style: $videoStyle, Audience: $targetAudience, Duration: $videoDuration seconds, Mood: $mood, Script: $dialogue.";
+    $textPrompt = "You are a world-class prompt engineer for text-to-video AI models. Your task is to create a single, highly detailed, and vivid prompt based on the user's specific requirements and optional product image.
+
+**CRITICAL INSTRUCTIONS:**
+1.  **Let the Image Define the Product's Look:** If an image is provided, do NOT describe the visual appearance of the product packaging in your prompt. The video AI will see this from the image.
+2.  **Adhere to User Specifications:** You MUST strictly follow the user's requirements for style, audience, duration, and mood.
+3.  **Incorporate Dialogue:** If the user provides a script or dialogue, it MUST be integrated into the scene's description and action.
+4.  **No Placeholders:** You are FORBIDDEN from using placeholders.
+
+**User's Creative Brief:**
+*   **Product Name:** " . (empty($productName) ? "The product in the image" : $productName) . "
+*   **Video Style:** {$videoStyle}
+*   **Target Audience:** {$targetAudience}
+*   **Video Duration:** Approximately {$videoDuration} seconds.
+*   **Desired Mood:** {$mood}
+*   **Dialogue/Script to Include:** " . (empty($dialogue) ? "None provided." : $dialogue) . "
+*   **Dialogue Language:** {$scriptLanguage}
+
+**Execution Plan:**
+Your entire output must be a single JSON object conforming to the specified schema. Use the creative brief above to fill each field with rich, descriptive detail to create a cinematic and photorealistic scene that matches the user's request.";
 }
 
 $parts = [['text' => $textPrompt]];
