@@ -10,7 +10,7 @@ if (!defined('DB_USER')) define('DB_USER', 'root');
 if (!defined('DB_PASS')) define('DB_PASS', '');
 
 // إعدادات مفتاح API
-if (!defined('API_KEY')) define('API_KEY', 'AIzaSyDw-wDemSnpYfTHo2oOWiZ1MxqCcpa1FXM');
+if (!defined('API_KEY')) define('API_KEY', '......');
 
 try {
     // إنشاء اتصال PDO
